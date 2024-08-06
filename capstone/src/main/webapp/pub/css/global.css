@@ -13,3 +13,8 @@ h1 {
 }
 
 
+.clickable-row:hover {
+    cursor: pointer;
+    background: radial-gradient(circle, rgba(238,174,202,.6) 0%, rgba(148,187,233,.6) 100%);
+
+}

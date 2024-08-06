@@ -129,6 +129,9 @@
                             <li class="nav-item">
                                 <span class="nav-link"><sec:authentication property="name"/></span>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/dashboard">Request New Book Club! </a>
+                            </li>
 
                         </ul>
 
