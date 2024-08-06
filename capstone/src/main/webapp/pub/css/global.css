@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+    /*background: linear-gradient(180deg, rgba(212, 212, 250,1) 0%, rgba(250, 225, 233,1) 100%);*/
+    padding: 10pt;
+    margin: 0;
+
+}
+
+
+.body {
+    background: linear-gradient(183deg, rgba(212,212,250,1) 0%, rgba(209,186,255,1) 13%, rgba(237,212,241,1) 43%, rgba(252,224,234,1) 60%, rgba(255,255,255,1) 100%)  no-repeat fixed;
+    /*background-image: url("../images/Classic_Models_Search_Engine_transparent.png");*/
+}
+
+
