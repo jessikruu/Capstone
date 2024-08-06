@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -19,6 +20,10 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<BookClub> bookClubs;
+
     @Column(name = "email")
     private String email;
 
@@ -28,5 +33,8 @@ public class User {
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
+
+    @Column(name = "username")
+    private String username;
 
 }
