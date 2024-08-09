@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.jessicakrueger.capstone.database.DAO.UserDAO;
+import org.jessicakrueger.capstone.database.entity.User;
 import org.jessicakrueger.capstone.form.CreateAccountFormBean;
 import org.jessicakrueger.capstone.security.AuthenticatedUserUtilities;
 import org.jessicakrueger.capstone.service.UserService;
@@ -65,8 +66,10 @@ public class LoginController {
 
         } else {
 
-            userService.createUser(form);
+            User user = userService.createUser(form);
             authenticatedUserUtilities.manualAuthentication(session, form.getEmail(), form.getPassword());
+            response.setViewName("redirect:/user/profile?id=" + user.getId());
+
 
         }
 
