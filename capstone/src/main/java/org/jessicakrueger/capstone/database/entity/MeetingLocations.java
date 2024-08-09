@@ -4,6 +4,8 @@ package org.jessicakrueger.capstone.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Entity
@@ -18,8 +20,12 @@ public class MeetingLocations {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "meeting_location")
-    private String meetingLocation;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "meetingLocation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<BookClub> bookClubs;
+
+    @Column(name = "location_name")
+    private String locationName;
 
     @Column(name = "description")
     private String description;
