@@ -16,12 +16,15 @@ public class CreateBookClubFormBean {
 
     private String clubName;
 
-    private String genre;
+    private Integer genreId;
 
     private Integer bookId;
 
     private Integer createdBy;
 
     private Integer meetingLocationId;
+
+    private String description;
+
 
 }
