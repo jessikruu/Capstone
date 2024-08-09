@@ -17,6 +17,8 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/pub/css/global.css">
+    <script src="/pub/javascript/FormFunction.js"></script>
+
 
 </head>
 <body class="body">
@@ -34,65 +36,14 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/product/search">Product Search</a>
-                </li>
-
-                <%--                Employee Actions dropdown--%>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Employee Actions
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/employee/search">Employee Search</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/employee/create">Employee Create</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/employee/edit?employeeId=">Employee Edit</a>
-                        </li>
-                    </ul>
-                </div>
 
 
-                <%--                customer actions dropdown--%>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Customer Actions
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/customer/search">Customer Search</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/customer/create">Customer Create</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/customer/edit?customerId=">Customer Edit</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/orders/search">Order Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/fileUpload">Upload File</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/account/create-account">Create User</a>
-                </li>
                 <sec:authorize access="!isAuthenticated()">
                     <li class="nav-item">
                         <a class="nav-link" href="/account/login">LogIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/create-account">Create User</a>
                     </li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
@@ -130,7 +81,7 @@
                                 <span class="nav-link"><sec:authentication property="name"/></span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/dashboard">Request New Book Club! </a>
+                                <a class="nav-link" href="/bookClub/create">Request New Book Club! </a>
                             </li>
 
                         </ul>
