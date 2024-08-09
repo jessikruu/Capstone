@@ -5,7 +5,6 @@
 
 <h1>Finders Readers</h1>
 
-Search for a book!
 
 <section>
 
@@ -19,7 +18,7 @@ Search for a book!
 
                     <div class="mb-3">
 
-                        <label for="search" class="form-label"><h4>Search Below</h4></label>
+                        <label for="search" class="form-label"><h4>Search for a book club!</h4></label>
                         <input type="text" value="${search}" class="form-control" id="search" name="search"
                                placeholder="Enter search term"/>
 
@@ -33,48 +32,7 @@ Search for a book!
     </div>
 </section>
 
-<section>
 
-    <div class="container">
-        <div class="row pt-5">
-            <div class="col-12">
-
-                <h2 class="text-center">Book Clubs Found: (${bookClubs.size()})</h2>
-
-            </div>
-
-
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <table class="table table-responsive">
-                    <tr>
-                        <th>Book Club Name</th>
-                        <th>Genre</th>
-
-
-                    </tr>
-
-                    <c:forEach items="${bookClubs}" var="bookClub">
-
-                        <tr onclick="window.location.href = '/bookClub/info?id=${bookClub.id}'" class="clickable-row">
-                            <td>${bookClub.clubName}</td>
-                            <td>${bookClub.genre}</td>
-
-
-                        </tr>
-                    </c:forEach>
-
-                </table>
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-</section>
 
 
 <jsp:include page="included/footer.jsp"/>
