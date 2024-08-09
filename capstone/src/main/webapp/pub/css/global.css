@@ -9,12 +9,62 @@ h1 {
 
 .body {
     background: linear-gradient(183deg, rgba(212,212,250,1) 0%, rgba(209,186,255,1) 13%, rgba(237,212,241,1) 43%, rgba(252,224,234,1) 60%, rgba(255,255,255,1) 100%)  no-repeat fixed;
-    /*background-image: url("../images/Classic_Models_Search_Engine_transparent.png");*/
 }
 
 
 .clickable-row:hover {
     cursor: pointer;
     background: radial-gradient(circle, rgba(238,174,202,.6) 0%, rgba(148,187,233,.6) 100%);
+    width: fit-content;
 
+}
+
+/*-------------------dropdown alignment----------------------*/
+
+.dropdown-menu-right {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.form-container {
+    border-radius: 15px;
+    background: rgba(255,255,255, .2);
+    padding: 20px;
+    /*margin-bottom: 20px;*/
+    justify-content: center;
+    /*position: relative;*/
+
+
+
+}
+
+p {
+    font-size: 24pt;
+    text-align: center;
+}
+
+/*==========================table css=============================*/
+
+table, th, td {
+    border: 1px solid;
+    background-color: rgba(209, 231, 221,1);
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(199, 219, 210,1);
+}
+
+/*============button hover===============*/
+
+.custom-primary {
+    background-color: #ccccf9;
+    border-color: #ababf5;
+    color: #1818cf;
+
+}
+.custom-primary:hover {
+    background-color: #9696f3;
+    border-color: #6d6dee;
+    color: black;
 }
