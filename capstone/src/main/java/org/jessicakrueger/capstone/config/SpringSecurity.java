@@ -33,7 +33,10 @@ public class SpringSecurity {
         http.authorizeRequests()
                 .requestMatchers(
                         new AntPathRequestMatcher("/admin/**"),
-                        new AntPathRequestMatcher("/employee/**")).authenticated()
+                        new AntPathRequestMatcher("/user/**"),
+                        new AntPathRequestMatcher("/bookClub/info"),
+                        new AntPathRequestMatcher("/bookClub/create")
+                ).authenticated()
                 .anyRequest().permitAll();
 
 
