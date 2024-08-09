@@ -27,6 +27,9 @@ public class UserService {
 
     public User createUser(CreateAccountFormBean form) {
 
+        log.debug(form.toString());
+
+
         //no errors, so we can add user to the db
         User user = new User();
 
@@ -36,19 +39,16 @@ public class UserService {
         user.setEmail(form.getEmail());
         user.setPassword(encryptedPassword);
         user.setCreateDate(new Date());
-
+        user.setFirstName(form.getFirstName());
+        user.setLastName(form.getLastName());
+        user.setUsername(form.getUsername());
+        user.setZipCode(form.getZipCode());
 
 
         userDAO.save(user);
 
-//        UserRole userRole = new UserRole();
-//        userRole.setRoleName("USER");
-//        userRole.setUserId(user.getId());
-//        userRole.setCreateDate(new Date());
-//
-//        userRoleDAO.save(userRole);
+        createUserRole(user.getId(), "USER");
 
-//        createUserRole(user.getId(), "USER");
 
         return user;
 
@@ -56,14 +56,14 @@ public class UserService {
     }
 
 
-//    private UserRole createUserRole(Integer userId, String roleName) {
-//        UserRole userRole = new UserRole();
-//        userRole.setUserId(userId);
-//        userRole.setRoleName(roleName);
-//        userRole.setCreateDate(new Date());
-//
-//        userRoleDAO.save(userRole);
-//
-//        return userRole;
-//    }
+    private UserRole createUserRole(Integer userId, String roleName) {
+        UserRole userRole = new UserRole();
+        userRole.setUserId(userId);
+        userRole.setRoleName(roleName);
+        userRole.setCreateDate(new Date());
+
+        userRoleDAO.save(userRole);
+
+        return userRole;
+    }
 }
