@@ -3,20 +3,21 @@ package org.jessicakrueger.capstone.controller;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.jessicakrueger.capstone.database.DAO.BookClubDAO;
+import org.jessicakrueger.capstone.database.DAO.GenresDAO;
 import org.jessicakrueger.capstone.database.DAO.MeetingLocationsDAO;
 import org.jessicakrueger.capstone.database.entity.BookClub;
+import org.jessicakrueger.capstone.database.entity.Genres;
 import org.jessicakrueger.capstone.database.entity.MeetingLocations;
+import org.jessicakrueger.capstone.database.entity.User;
 import org.jessicakrueger.capstone.form.CreateBookClubFormBean;
+import org.jessicakrueger.capstone.security.AuthenticatedUserUtilities;
 import org.jessicakrueger.capstone.service.BookClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.print.Book;
@@ -35,6 +36,19 @@ public class BookClubController {
 
     @Autowired
     BookClubService bookClubService;
+
+    @Autowired
+    GenresDAO genresDAO;
+
+    private final AuthenticatedUserUtilities authenticatedUserUtilities;
+
+    public BookClubController(AuthenticatedUserUtilities authenticatedUserUtilities) {
+        this.authenticatedUserUtilities = authenticatedUserUtilities;
+    }
+
+
+
+
 
     @GetMapping("/info")
     public ModelAndView bookClubInfo(@RequestParam(required = false) Integer id) {
@@ -59,7 +73,7 @@ public class BookClubController {
 
         //this page is for another page of the website which is expressed by / and words after, such as http://localhost:8080/another-page
 
-        ModelAndView response = new ModelAndView("index");
+        ModelAndView response = new ModelAndView("bookClub/bookClubSearchResults");
         //the view name is the jsp, and that references the page for the view
 
         log.debug("The user searched for the term: " + search);
@@ -73,6 +87,11 @@ public class BookClubController {
         //the attribute name assigns a name for the jsp to use, the second term needs to match the list name, bc that is what references it
         log.debug(bookClubs.toString());
 
+        bookClubs.stream().forEach(bookClub -> {
+            log.debug(bookClub.toString());
+            log.debug("Bookclub: " + bookClub.getClubName());
+        });
+
 
         return response;
     }
@@ -81,6 +100,10 @@ public class BookClubController {
         List<MeetingLocations> possibleLocations = meetingLocationsDAO.findAll();
 
         response.addObject("possibleLocations", possibleLocations);
+
+        List<Genres> possibleGenres = genresDAO.findAll();
+
+        response.addObject("possibleGenres", possibleGenres);
 
     }
 
@@ -91,6 +114,11 @@ public class BookClubController {
 
         loadDropdowns(response);
 
+        User currentUser = authenticatedUserUtilities.getCurrentUser();
+
+        if (currentUser != null) {
+            response.addObject("userId", currentUser.getId());
+        }
 
         return response;
     }
@@ -138,7 +166,7 @@ public class BookClubController {
             //the new id is available in the return from the save method
             //returns the same object after the info has been inserted into the db
 
-            response.setViewName("redirect:/bookClub/bookClubInfo?id=" + bookClub.getId());
+            response.setViewName("redirect:/bookClub/info?id=" + bookClub.getId());
             //the redirect:/employee/info?id= is referring to the mapping of the employee info page
             //after the redirect, it will input the data and create the new page
 
