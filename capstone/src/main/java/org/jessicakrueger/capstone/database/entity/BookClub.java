@@ -4,6 +4,7 @@ package org.jessicakrueger.capstone.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Setter
@@ -20,41 +21,43 @@ public class BookClub {
     @Column(name = "id")
     private Integer id;
 
-//    @ToString.Exclude
-//    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<Customer> customers;
-
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "created_by", nullable = true)
     private User user;
 
+    @Column(name = "created_by" ,insertable = false, updatable = false)
+    private Integer createdBy;
+
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "meeting_location_id", nullable = true)
-    private MeetingLocations MeetingLocation;
-
-//    @Column(name = "office_id",insertable = false, updatable = false)
-//    private Integer officeId;
-
-    @Column(name = "club_name")
-    private String clubName;
-
-    @Column(name = "genre")
-    private String genre;
-
-    @Column(name = "book_id")
-    private Integer bookId;
-
-    @Column(name = "created_by" ,insertable = false, updatable = false)
-    private Integer createdBy;
+    private MeetingLocations meetingLocation;
 
     @Column(name = "meeting_location_id", insertable=false, updatable=false)
     private Integer meetingLocationId;
 
-//    @Column(name = "")
-//    private Integer ;
+    @Column(name = "club_name")
+    private String clubName;
 
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "genre_id", nullable = true)
+    private Genres genre;
+
+    @Column(name = "genre_id", insertable=false, updatable=false)
+    private Integer genreId;
+
+    @Column(name = "book_id")
+    private Integer bookId;
+
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "creation_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate;
 
 
 }
