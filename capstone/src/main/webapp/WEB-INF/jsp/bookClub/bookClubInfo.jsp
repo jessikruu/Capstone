@@ -28,6 +28,9 @@
                     <td style="font-weight: bolder;">Description:</td>
                     <td>${bookClubKey.description}</td>
                 </tr>
+                <tr>
+                    <td onclick="window.location.href = '/bookClub/addToClub?id=${bookClubKey.id}'" class="clickable-row">Add to your bookclubs!</td>
+                </tr>
 
 
             </table>
@@ -37,5 +40,48 @@
     </div>
 </div>
 
+
+
+<div class="container">
+
+    <p>
+        <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+           role="button" aria-expanded="false"
+           aria-controls="collapseExample">
+            Customers Found (${customers.size()})
+        </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body body">
+
+            <div class="row pt-5">
+                <div class="col-12">
+                    <h2 class="text-center">Active Customers</h2>
+                </div>
+            </div>
+            <div class="row pt-3 justify-content-center">
+                <div class="col-8">
+                    <table class="table">
+                        <tr>
+                            <th>Customer ID:</th>
+                            <th>Customer Name:</th>
+                            <th>Contact Name</th>
+
+                        </tr>
+                        <c:forEach items="${customers}" var="customer">
+                            <tr onclick="window.location.href = '/customer/info?id=${customer.id}'"
+                                class="clickable-row">
+                                <td>${customer.id}</td>
+                                <td>${customer.customerName}</td>
+                                <td>${customer.contactFirstName} ${customer.contactLastName}</td>
+
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <jsp:include page="../included/footer.jsp"/>
