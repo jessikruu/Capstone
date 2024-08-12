@@ -2,19 +2,25 @@ package org.jessicakrueger.capstone.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.jessicakrueger.capstone.database.DAO.BookClubDAO;
+import org.jessicakrueger.capstone.database.DAO.ClubMemberDAO;
 import org.jessicakrueger.capstone.database.DAO.UserDAO;
 import org.jessicakrueger.capstone.database.entity.BookClub;
+import org.jessicakrueger.capstone.database.entity.ClubMembers;
 import org.jessicakrueger.capstone.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -26,6 +32,9 @@ public class UserController {
 
     @Autowired
     BookClubDAO bookClubDAO;
+
+    @Autowired
+    ClubMemberDAO clubMemberDAO;
 
     @GetMapping("/profile")
     public ModelAndView bookClubInfo(@RequestParam(required = false) Integer id) {
@@ -48,5 +57,39 @@ public class UserController {
 
 
         return response;
+    }
+
+    @GetMapping("/bookClubsJoined")
+    public ModelAndView bookClubsJoined(@RequestParam(required = true) Integer id) {
+
+        ModelAndView response = new ModelAndView("user/bookClubsJoined");
+
+        User userKey = userDAO.findById(id);
+        response.addObject("userKey", userKey);
+
+//        List<BookClub> bookClubInfo = clubMemberDAO.findBookClubsByMember(id);
+//        for (BookClub bookClub : bookClubInfo) {
+//            response.addObject("bookClubInfo", bookClub); // Note: Overwriting the existing object with each iteration
+//        }
+        List<ClubMembers> clubMembers = clubMemberDAO.findByUserId(id);
+        // Extract BookClub IDs from the memberships
+        List<Integer> bookClubIds = clubMembers.stream()
+                .map(ClubMembers::getClubId)
+                .collect(Collectors.toList());
+
+        // Fetch the details for each book club
+        List<BookClub> bookClubDetails = new ArrayList<>();
+        for (Integer clubId : bookClubIds) {
+            BookClub bookClub = bookClubDAO.findById(clubId);
+            if (bookClub != null) {
+                bookClubDetails.add(bookClub);
+            }
+        }
+
+        // Add the book club details to the model
+        response.addObject("bookClubDetails", bookClubDetails);
+
+        return response;
+
     }
 }

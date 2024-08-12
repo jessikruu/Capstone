@@ -18,6 +18,8 @@
 
     <link rel="stylesheet" href="/pub/css/global.css">
     <script src="/pub/javascript/FormFunction.js"></script>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 
 </head>
@@ -83,14 +85,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/bookClub/create">Request New Book Club! </a>
                             </li>
+                            <li class="nav-item"> <c:if test="${isLoggedIn}">
+                                <a class="nav-link" href="/user/bookClubsJoined?id=${userKey.id}">View Currently Joined Bookclubs!</a></c:if>
+                            </li>
 
                         </ul>
 
                         </sec:authorize>
 
-                        <%--                <li class="nav-item">--%>
-                        <%--                    <a class="nav-link" href="/another-page">2nd Page</a>--%>
-                        <%--                </li>--%>
+
 
 
             </ul>
