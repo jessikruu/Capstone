@@ -35,6 +35,13 @@
 
             </table>
 
+            <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+               role="button" aria-expanded="false"
+               aria-controls="collapseExample"
+               onclick="window.location.href = '/discussion/edit?id=${discussions.id}'">
+                Edit Current Discussion Post!
+            </a>
+
 
         </div>
     </div>

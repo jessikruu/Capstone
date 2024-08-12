@@ -41,8 +41,8 @@ public class DiscussionService {
         discussion.setBody(form.getBody());
         discussion.setCreationDate(new Date());
 
-        BookClub clubId = bookClubDAO.findById(form.getClubId());
-        discussion.setBookClub(clubId);
+        BookClub bookClub = bookClubDAO.findById(form.getClubId());
+        discussion.setBookClub(bookClub);
 
 
 

@@ -33,7 +33,7 @@ public class Discussion {
     private User discussionCreatorUser;
 
     @Column(name = "discussion_creator", insertable = false, updatable = false)
-    private Integer discussionCreator;
+    private Integer discussionCreatorId;
 
     @Column(name = "body")
     private String body;

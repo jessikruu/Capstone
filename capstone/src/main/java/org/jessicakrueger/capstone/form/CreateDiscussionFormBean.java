@@ -7,6 +7,7 @@ import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.jessicakrueger.capstone.database.entity.BookClub;
 
 import java.util.Date;
 
@@ -19,11 +20,12 @@ public class CreateDiscussionFormBean {
 
     private Integer clubId;
 
-    private Integer discussionCreator;
+    private Integer discussionCreatorId;
 
     private String body;
 
     private Date creationDate;
 
     private String title;
+
 }

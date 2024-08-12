@@ -9,7 +9,6 @@ import org.jessicakrueger.capstone.database.DAO.UserDAO;
 import org.jessicakrueger.capstone.database.entity.BookClub;
 import org.jessicakrueger.capstone.database.entity.Discussion;
 import org.jessicakrueger.capstone.database.entity.User;
-import org.jessicakrueger.capstone.form.CreateBookClubFormBean;
 import org.jessicakrueger.capstone.form.CreateDiscussionFormBean;
 import org.jessicakrueger.capstone.security.AuthenticatedUserUtilities;
 import org.jessicakrueger.capstone.service.DiscussionService;
@@ -23,9 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.awt.print.Book;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -75,7 +71,7 @@ public class DiscussionController {
 
     @GetMapping("/create")
     public ModelAndView create(@RequestParam Integer id) {
-        ModelAndView response = new ModelAndView("discussion/discussionCreate");
+        ModelAndView response = new ModelAndView("discussionForm");
 
         BookClub currentBookClub = bookClubDAO.findById(id);
         response.addObject("bookClub", currentBookClub);
@@ -101,12 +97,11 @@ public class DiscussionController {
                 log.debug("Validation error : " + ((FieldError) error).getField() + " = " + error.getDefaultMessage());
             }
 
-            //if we're in this part of the if statement, then we know an error has occurred
-            //we add the binding result to the model so we can use it on the JSP page to show the user the errors
+
             response.addObject("bindingResult", bindingResult);
 
 
-            response.setViewName("discussion/discussionCreate");
+            response.setViewName("discussionForm");
 
             //now to add the form to the model so we can display the user entered data
 
@@ -117,25 +112,42 @@ public class DiscussionController {
 
         } else {
 
-            //call the employee service to create the employee
             Discussion discussion = discussionService.createDiscussionPost(form);
 
-            //when we save to the database, it will autoincrement to give us a new id
-            //the new id is available in the return from the save method
-            //returns the same object after the info has been inserted into the db
 
             response.setViewName("redirect:/discussion/info?id=" + discussion.getId());
-            //the redirect:/employee/info?id= is referring to the mapping of the employee info page
-            //after the redirect, it will input the data and create the new page
 
-
-            //below are used for post mapping
-//            loadDropdowns(response);
-//            response.setViewName("employee/createEmployee");
 
             return response;
 
 
         }
+    }
+
+    @GetMapping("/edit")
+    public ModelAndView edit(@RequestParam(required = false) Integer id) {
+        ModelAndView response = new ModelAndView("discussionForm");
+
+
+        if (id != null) {
+
+            Discussion discussion = discussionDAO.findById(id);
+            if (discussion != null) {
+                CreateDiscussionFormBean form = new CreateDiscussionFormBean();
+
+                form.setTitle(discussion.getTitle());
+                form.setBody(discussion.getBody());
+                form.setDiscussionId(discussion.getId());
+                form.setDiscussionCreatorId(discussion.getDiscussionCreatorId());
+                form.setClubId(discussion.getClubId());
+
+                response.addObject("form", form);
+            }
+            else {
+                response.addObject("errorMessage", "The discussion post wasn't found in the database");
+            }
+        }
+
+        return response;
     }
 }

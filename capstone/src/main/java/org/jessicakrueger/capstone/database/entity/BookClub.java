@@ -63,5 +63,9 @@ public class BookClub {
     @OneToMany(mappedBy = "bookClub", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClubMembers> clubMemberships;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "bookClub", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Discussion> discussions;
+
 
 }

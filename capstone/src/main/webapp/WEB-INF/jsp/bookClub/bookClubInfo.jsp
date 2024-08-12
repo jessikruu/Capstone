@@ -88,7 +88,7 @@
                             <tr onclick="window.location.href = '/discussion/info?id=${discussion.id}'"
                                 class="clickable-row">
                                 <td>${discussion.title}</td>
-                                <td>${discussion.discussionCreator}</td>
+                                <td>${discussion.discussionCreatorId}</td>
                                 <td>${discussion.creationDate}</td>
 
                             </tr>
