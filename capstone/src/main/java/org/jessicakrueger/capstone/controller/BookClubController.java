@@ -2,13 +2,8 @@ package org.jessicakrueger.capstone.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.jessicakrueger.capstone.database.DAO.BookClubDAO;
-import org.jessicakrueger.capstone.database.DAO.GenresDAO;
-import org.jessicakrueger.capstone.database.DAO.MeetingLocationsDAO;
-import org.jessicakrueger.capstone.database.entity.BookClub;
-import org.jessicakrueger.capstone.database.entity.Genres;
-import org.jessicakrueger.capstone.database.entity.MeetingLocations;
-import org.jessicakrueger.capstone.database.entity.User;
+import org.jessicakrueger.capstone.database.DAO.*;
+import org.jessicakrueger.capstone.database.entity.*;
 import org.jessicakrueger.capstone.form.CreateBookClubFormBean;
 import org.jessicakrueger.capstone.security.AuthenticatedUserUtilities;
 import org.jessicakrueger.capstone.service.BookClubService;
@@ -21,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.print.Book;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -40,7 +36,14 @@ public class BookClubController {
     @Autowired
     GenresDAO genresDAO;
 
+    @Autowired
+    ClubMemberDAO clubMemberDAO;
+
+    @Autowired
+    private UserDAO userDAO;
+
     private final AuthenticatedUserUtilities authenticatedUserUtilities;
+
 
     public BookClubController(AuthenticatedUserUtilities authenticatedUserUtilities) {
         this.authenticatedUserUtilities = authenticatedUserUtilities;
@@ -91,6 +94,14 @@ public class BookClubController {
             log.debug(bookClub.toString());
             log.debug("Bookclub: " + bookClub.getClubName());
         });
+
+
+        if (authenticatedUserUtilities.isAuthenticated()) {
+            User currentUser = authenticatedUserUtilities.getCurrentUser();
+            User userKey = userDAO.findById(currentUser.getId());
+            response.addObject("userKey", userKey);
+        }
+
 
 
         return response;
@@ -179,6 +190,41 @@ public class BookClubController {
 
 
         }
+    }
+
+    @GetMapping("/addToClub")
+    public ModelAndView addUserToClub(@RequestParam Integer id) {
+
+        ModelAndView response = new ModelAndView();
+
+        BookClub currentBookClub = bookClubDAO.findById(id);
+
+        User currentUser = authenticatedUserUtilities.getCurrentUser();
+
+        ClubMembers clubMembers = clubMemberDAO.findIfAMember(currentUser.getId(), currentBookClub.getId());
+        if (clubMembers == null) {
+
+            clubMembers = new ClubMembers();
+
+            User user = userDAO.findById(currentUser.getId());
+            clubMembers.setUser(user);
+            log.debug("user ID: " + currentUser.getId());
+
+            BookClub bookClub = bookClubDAO.findById(currentBookClub.getId());
+            clubMembers.setBookClub(bookClub);
+            log.debug("bookclub id: " + currentBookClub.getId());
+            clubMembers.setJoinDate(new Date());
+
+            clubMemberDAO.save(clubMembers);
+
+            response.setViewName("redirect:/user/bookClubsJoined?id=" + user.getId());
+
+
+        } else {
+
+        }
+        return response;
+
     }
 
 }
