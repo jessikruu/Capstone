@@ -33,7 +33,23 @@
                 </tr>
 
 
+
+
             </table>
+
+            <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+               role="button" aria-expanded="false"
+               aria-controls="collapseExample"
+               onclick="window.location.href = '/bookClub/addToClub?id=${bookClubKey.id}'">
+                Add to your bookclubs!
+            </a>
+
+            <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+               role="button" aria-expanded="false"
+               aria-controls="collapseExample"
+               onclick="window.location.href = '/discussion/create?id=${bookClubKey.id}'">
+                Create New Discussion Post!
+            </a>
 
 
         </div>
@@ -48,7 +64,7 @@
         <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
            role="button" aria-expanded="false"
            aria-controls="collapseExample">
-            Customers Found (${customers.size()})
+            Discussions Found (${discussions.size()})
         </a>
     </p>
     <div class="collapse" id="collapseExample">
@@ -56,24 +72,24 @@
 
             <div class="row pt-5">
                 <div class="col-12">
-                    <h2 class="text-center">Active Customers</h2>
+                    <h2 class="text-center">Current Discussion Posts</h2>
                 </div>
             </div>
             <div class="row pt-3 justify-content-center">
                 <div class="col-8">
                     <table class="table">
                         <tr>
-                            <th>Customer ID:</th>
-                            <th>Customer Name:</th>
-                            <th>Contact Name</th>
+                            <th>Title:</th>
+                            <th>Creator:</th>
+                            <th>Date Created:</th>
 
                         </tr>
-                        <c:forEach items="${customers}" var="customer">
-                            <tr onclick="window.location.href = '/customer/info?id=${customer.id}'"
+                        <c:forEach items="${discussions}" var="discussion">
+                            <tr onclick="window.location.href = '/discussion/info?id=${discussion.id}'"
                                 class="clickable-row">
-                                <td>${customer.id}</td>
-                                <td>${customer.customerName}</td>
-                                <td>${customer.contactFirstName} ${customer.contactLastName}</td>
+                                <td>${discussion.title}</td>
+                                <td>${discussion.discussionCreator}</td>
+                                <td>${discussion.creationDate}</td>
 
                             </tr>
                         </c:forEach>
