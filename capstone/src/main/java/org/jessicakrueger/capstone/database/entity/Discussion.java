@@ -13,17 +13,26 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "discussions")
-public class Discussions {
+public class Discussion {
 
     @Id // this tells hibernate that this column is the PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) // this tells hibernate that the column is autoincremented
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "club_id")
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id")
+    private BookClub bookClub;
+
+    @Column(name = "club_id", insertable = false, updatable = false)
     private Integer clubId;
 
-    @Column(name = "discussion_creator")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "discussion_creator")
+    private User discussionCreatorUser;
+
+    @Column(name = "discussion_creator", insertable = false, updatable = false)
     private Integer discussionCreator;
 
     @Column(name = "body")

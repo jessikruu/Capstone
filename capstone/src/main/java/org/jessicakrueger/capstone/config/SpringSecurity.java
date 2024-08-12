@@ -35,7 +35,8 @@ public class SpringSecurity {
                         new AntPathRequestMatcher("/admin/**"),
                         new AntPathRequestMatcher("/user/**"),
                         new AntPathRequestMatcher("/bookClub/info"),
-                        new AntPathRequestMatcher("/bookClub/create")
+                        new AntPathRequestMatcher("/bookClub/create"),
+                        new AntPathRequestMatcher("/discussion/**")
                 ).authenticated()
                 .anyRequest().permitAll();
 

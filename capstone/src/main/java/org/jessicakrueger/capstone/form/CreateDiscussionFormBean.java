@@ -15,6 +15,7 @@ import java.util.Date;
 @ToString
 public class CreateDiscussionFormBean {
 
+    private Integer discussionId;
 
     private Integer clubId;
 
