@@ -1,8 +1,11 @@
 package org.jessicakrueger.capstone.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jessicakrueger.capstone.database.DAO.BookClubDAO;
+import org.jessicakrueger.capstone.database.DAO.ClubMemberDAO;
 import org.jessicakrueger.capstone.database.DAO.UserDAO;
 import org.jessicakrueger.capstone.database.DAO.UserRoleDAO;
+import org.jessicakrueger.capstone.database.entity.BookClub;
 import org.jessicakrueger.capstone.database.entity.User;
 import org.jessicakrueger.capstone.database.entity.UserRole;
 import org.jessicakrueger.capstone.form.CreateAccountFormBean;
@@ -11,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -24,6 +28,12 @@ public class UserService {
 
     @Autowired
     private UserRoleDAO userRoleDAO;
+
+    @Autowired
+    private BookClubDAO bookClubDAO;
+
+    @Autowired
+    ClubMemberDAO clubMemberDAO;
 
     public User createUser(CreateAccountFormBean form) {
 
@@ -66,4 +76,5 @@ public class UserService {
 
         return userRole;
     }
+
 }
