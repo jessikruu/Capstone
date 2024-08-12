@@ -59,7 +59,7 @@
                                     <tr onclick="window.location.href = '/bookClub/info?id=${bookClub.id}'"
                                         class="clickable-row">
                                         <td>${bookClub.clubName}</td>
-                                        <td>${bookClub.genre}</td>
+                                        <td>${bookClub.genre.genreName}</td>
 
                                     </tr>
                                 </c:forEach>

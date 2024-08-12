@@ -43,6 +43,8 @@ public class BookClubController {
     private UserDAO userDAO;
 
     private final AuthenticatedUserUtilities authenticatedUserUtilities;
+    @Autowired
+    private DiscussionDAO discussionDAO;
 
 
     public BookClubController(AuthenticatedUserUtilities authenticatedUserUtilities) {
@@ -65,6 +67,9 @@ public class BookClubController {
 
         BookClub bookClub = bookClubDAO.findById(id);
         response.addObject("bookClubKey", bookClub);
+
+        List<Discussion> discussions = discussionDAO.findByBookClubId(id);
+        response.addObject("discussions", discussions);
 
 
         return response;
@@ -170,7 +175,7 @@ public class BookClubController {
 
         } else {
 
-            //call the employee service to create the employee
+            //call the bookclub service to create the employee
             BookClub bookClub = bookClubService.createBookClub(form);
 
             //when we save to the database, it will autoincrement to give us a new id

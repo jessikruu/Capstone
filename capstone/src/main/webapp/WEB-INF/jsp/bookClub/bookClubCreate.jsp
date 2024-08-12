@@ -2,9 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-
-
-
 <!-- page header -->
 <c:if test="${empty form.bookClubId}">
     <h1 class="text-center">Create Book Club</h1>
@@ -57,14 +54,14 @@
 
                 </div>
 
-<%--                description input--%>
+                <%--                description input--%>
 
                 <div class=" row g-4  p-3 justify-content-center">
                     <div class="col-md-4">
                         <label class="visually-hidden" for="descriptionID">description</label>
                         <div>
                             <textarea rows="6" id="descriptionID" name="description" placeholder="Description"
-                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('description')}">is-invalid</c:if>"
+                                      class="form-control <c:if test="${bindingResult.hasFieldErrors('description')}">is-invalid</c:if>"
                                       value="${form.description}"></textarea>
                             <c:if test="${bindingResult.hasFieldErrors('description')}">
                                 <div class="text-danger">
@@ -78,7 +75,6 @@
                     </div>
 
                 </div>
-
 
 
                 <%--                    meeting id input--%>
@@ -100,7 +96,7 @@
                         </div>
                     </div>
 
-<%--                    genres input--%>
+                    <%--                    genres input--%>
 
                     <div class="col-md-2">
                         <label for="genresID" class="visually-hidden">Genre:</label>
@@ -117,7 +113,6 @@
                             </select>
                         </div>
                     </div>
-
 
 
                 </div>
@@ -140,8 +135,6 @@
     </form>
 
 </div>
-
-</section>
 
 
 <jsp:include page="../included/footer.jsp"/>

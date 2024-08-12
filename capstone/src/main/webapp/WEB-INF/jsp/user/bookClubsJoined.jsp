@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<h1>${userKey.username}'s Current Bookclubs! (${clubMembers.size()})</h1>
+<h1>${userKey.username}'s Current Bookclubs! (${bookClubDetails.size()})</h1>
 
 
 
@@ -23,7 +23,7 @@
                 <!-- Iterate Over Each BookClub -->
                 <c:forEach var="bookClub" items="${bookClubDetails}">
                     <tr>
-                        <td>${bookClub.clubName}</td>
+                        <td onclick="window.location.href = '/bookClub/info?id=${bookClub.id}'" class="clickable-row">${bookClub.clubName}</td>
                         <td onclick="window.location.href = '/genres/info/${bookClub.genre.id}'" class="clickable-row">${bookClub.genre.genreName}</td>
                         <td onclick="window.location.href = '/meetingLocation/info/${bookClub.meetingLocation.id}'" class="clickable-row">${bookClub.meetingLocation.locationName}</td>
                         <td onclick="window.location.href = '/user/profile?id=${bookClub.user.id}'" class="clickable-row">${bookClub.user.username}</td>
