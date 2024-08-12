@@ -59,5 +59,9 @@ public class BookClub {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "bookClub", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ClubMembers> clubMemberships;
+
 
 }

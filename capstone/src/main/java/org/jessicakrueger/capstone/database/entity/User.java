@@ -22,7 +22,7 @@ public class User {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<BookClub> bookClubs;
+    private List<ClubMembers> clubMembers;
 
     @Column(name = "email")
     private String email;
