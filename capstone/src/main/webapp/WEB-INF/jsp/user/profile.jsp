@@ -4,6 +4,15 @@
 
 
 <h1>${userKey.username}</h1>
+
+<div>
+    <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+       role="button" aria-expanded="false"
+       aria-controls="collapseExample"
+       onclick="window.location.href = '/user/bookClubsJoined?id=${userKey.id}'">
+        ${userKey.username}'s Joined Bookclubs
+    </a>
+</div>
 <div class="container">
     <div class="row justify-content-center">
 
@@ -33,6 +42,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="container">
 
@@ -71,6 +81,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <jsp:include page="../included/footer.jsp"/>
