@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <td style="font-weight: bolder;">Book Club:</td>
-                    <td onclick="window.location.href = '/user/profile?id=${discussions.discussionCreatorUser.id}'"
+                    <td onclick="window.location.href = '/bookClub/info?id=${discussions.id}'"
                         class="clickable-row">${discussions.discussionCreatorUser.username}</td>
                 </tr>
                 <tr>

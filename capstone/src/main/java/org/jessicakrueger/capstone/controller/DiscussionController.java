@@ -71,7 +71,7 @@ public class DiscussionController {
 
     @GetMapping("/create")
     public ModelAndView create(@RequestParam Integer id) {
-        ModelAndView response = new ModelAndView("discussionForm");
+        ModelAndView response = new ModelAndView("discussion/discussionForm");
 
         BookClub currentBookClub = bookClubDAO.findById(id);
         response.addObject("bookClub", currentBookClub);
@@ -126,7 +126,7 @@ public class DiscussionController {
 
     @GetMapping("/edit")
     public ModelAndView edit(@RequestParam(required = false) Integer id) {
-        ModelAndView response = new ModelAndView("discussionForm");
+        ModelAndView response = new ModelAndView("discussion/discussionForm");
 
 
         if (id != null) {

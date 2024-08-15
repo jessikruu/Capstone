@@ -28,9 +28,7 @@
                     <td style="font-weight: bolder;">Description:</td>
                     <td>${bookClubKey.description}</td>
                 </tr>
-                <tr>
-                    <td onclick="window.location.href = '/bookClub/addToClub?id=${bookClubKey.id}'" class="clickable-row">Add to your bookclubs!</td>
-                </tr>
+
 
 
 
@@ -51,6 +49,48 @@
                 Create New Discussion Post!
             </a>
 
+            <div class="container">
+
+                <p>
+                    <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+                       role="button" aria-expanded="false"
+                       aria-controls="collapseExample">
+                        Discussions Found (${discussions.size()})
+                    </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body body">
+
+                        <div class="row pt-5">
+                            <div class="col-12">
+                                <h2 class="text-center">Current Discussion Posts</h2>
+                            </div>
+                        </div>
+                        <div class="row pt-3 justify-content-center">
+                            <div class="col-8">
+                                <table class="table">
+                                    <tr>
+                                        <th>Title:</th>
+                                        <th>Creator:</th>
+                                        <th>Date Created:</th>
+
+                                    </tr>
+                                    <c:forEach items="${discussions}" var="discussion">
+                                        <tr onclick="window.location.href = '/discussion/info?id=${discussion.id}'"
+                                            class="clickable-row">
+                                            <td>${discussion.title}</td>
+                                            <td>${discussion.discussionCreatorId}</td>
+                                            <td>${discussion.creationDate}</td>
+
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -58,46 +98,6 @@
 
 
 
-<div class="container">
 
-    <p>
-        <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
-           role="button" aria-expanded="false"
-           aria-controls="collapseExample">
-            Discussions Found (${discussions.size()})
-        </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body body">
-
-            <div class="row pt-5">
-                <div class="col-12">
-                    <h2 class="text-center">Current Discussion Posts</h2>
-                </div>
-            </div>
-            <div class="row pt-3 justify-content-center">
-                <div class="col-8">
-                    <table class="table">
-                        <tr>
-                            <th>Title:</th>
-                            <th>Creator:</th>
-                            <th>Date Created:</th>
-
-                        </tr>
-                        <c:forEach items="${discussions}" var="discussion">
-                            <tr onclick="window.location.href = '/discussion/info?id=${discussion.id}'"
-                                class="clickable-row">
-                                <td>${discussion.title}</td>
-                                <td>${discussion.discussionCreatorId}</td>
-                                <td>${discussion.creationDate}</td>
-
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <jsp:include page="../included/footer.jsp"/>

@@ -27,9 +27,18 @@
 
             <form class="form-container" action="/discussion/createSubmit">
 
-                <input type="hidden" name="discussionId" value="${form.discussionId}">
-                <input type="hidden" name="discussionCreatorId" value="${form.discussionCreatorId}">
-                <input type="hidden" name="clubId" value="${form.clubId}">
+                <c:if test="${not empty form.discussionId}">
+                    <input type="hidden" name="discussionId" value="${form.discussionId}">
+                    <input type="hidden" name="discussionCreatorId" value="${form.discussionCreatorId}">
+                    <input type="hidden" name="clubId" value="${form.clubId}">
+                </c:if>
+
+                <c:if test="${empty form.discussionId}">
+                    <input type="hidden" name="discussionId" value="${form.discussionId}">
+                    <input type="hidden" name="discussionCreator" value="${userId}">
+                    <input type="hidden" name="clubId" value="${bookClub.id}">
+                </c:if>
+
 
 
 

@@ -28,4 +28,5 @@ public class CreateDiscussionFormBean {
 
     private String title;
 
+    private BookClub bookClub;
 }
