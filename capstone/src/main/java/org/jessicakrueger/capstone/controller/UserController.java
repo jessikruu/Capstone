@@ -2,16 +2,16 @@ package org.jessicakrueger.capstone.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.jessicakrueger.capstone.database.DAO.BookClubDAO;
 import org.jessicakrueger.capstone.database.DAO.ClubMemberDAO;
+import org.jessicakrueger.capstone.database.DAO.DiscussionDAO;
 import org.jessicakrueger.capstone.database.DAO.UserDAO;
 import org.jessicakrueger.capstone.database.entity.BookClub;
 import org.jessicakrueger.capstone.database.entity.ClubMembers;
+import org.jessicakrueger.capstone.database.entity.Discussion;
 import org.jessicakrueger.capstone.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,6 +35,9 @@ public class UserController {
 
     @Autowired
     ClubMemberDAO clubMemberDAO;
+
+    @Autowired
+    DiscussionDAO discussionDAO;
 
     @GetMapping("/profile")
     public ModelAndView bookClubInfo(@RequestParam(required = false) Integer id) {
@@ -88,6 +91,21 @@ public class UserController {
 
         // Add the book club details to the model
         response.addObject("bookClubDetails", bookClubDetails);
+
+        return response;
+
+    }
+
+    @GetMapping("/discussionsPosted")
+    public ModelAndView discussionsPosted(@RequestParam(required = true) Integer id) {
+
+        ModelAndView response = new ModelAndView("user/discussionsPosted");
+
+        User userKey = userDAO.findById(id);
+        response.addObject("userKey", userKey);
+
+        List<Discussion> posts = discussionDAO.findByUserId(id);
+        response.addObject("posts", posts);
 
         return response;
 

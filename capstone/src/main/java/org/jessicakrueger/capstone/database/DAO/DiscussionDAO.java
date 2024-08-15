@@ -16,4 +16,7 @@ public interface DiscussionDAO extends JpaRepository<Discussion, Long> {
 
     @Query("select d.clubId from Discussion d where d.clubId = :id")
     Discussion getClubId(Integer id);
+
+    @Query("select d from Discussion d join User u on u.id = d.discussionCreatorId where d.discussionCreatorId= :id")
+    List<Discussion> findByUserId(Integer id);
 }

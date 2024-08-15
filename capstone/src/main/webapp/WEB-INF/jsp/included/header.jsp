@@ -58,14 +58,20 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Admin
+                            ${userKey.username} - Admin
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                        <li class="nav-item">
-                            <span class="nav-link"><sec:authentication property="name"/></span>
+                        <li class="nav-item"> <c:if test="${isLoggedIn}">
+                            <a class="nav-link" href="/user/profile?id=${userKey.id}">View Profile</a></c:if>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item"> <c:if test="${isLoggedIn}">
+                            <a class="nav-link" href="/user/bookClubsJoined?id=${userKey.id}">View Currently Joined Bookclubs</a></c:if>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bookClub/create">Request New Book Club! </a>
                         </li>
 
                     </ul>

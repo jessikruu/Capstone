@@ -4,15 +4,21 @@
 
 
 <h1>${userKey.username}</h1>
-
-<div>
+<div class="container justify-content-center">
+<div class="row  col-4">
     <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
        role="button" aria-expanded="false"
        aria-controls="collapseExample"
        onclick="window.location.href = '/user/bookClubsJoined?id=${userKey.id}'">
-        ${userKey.username}'s Joined Bookclubs
+        Joined Bookclubs
     </a>
-</div>
+    <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+       role="button" aria-expanded="false"
+       aria-controls="collapseExample"
+       onclick="window.location.href = '/user/discussionsPosted?id=${userKey.id}'">
+        Posted Discussions
+    </a>
+</div></div>
 <div class="container">
     <div class="row justify-content-center">
 
