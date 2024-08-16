@@ -71,8 +71,18 @@ public class BookClubController {
         List<Discussion> discussions = discussionDAO.findByBookClubId(id);
         response.addObject("discussions", discussions);
 
+        if (authenticatedUserUtilities.isAuthenticated()) {
+            User currentUser = authenticatedUserUtilities.getCurrentUser();
+            User userKey = userDAO.findById(currentUser.getId());
+            response.addObject("userKey", userKey);
+            response.addObject("isLoggedIn", true); // Add this line to indicate the user is logged in
+        } else {
+            response.addObject("isLoggedIn", false); // Indicate the user is not logged in
+        }
 
         return response;
+
+
     }
 
     @GetMapping("/search")
@@ -136,7 +146,16 @@ public class BookClubController {
             response.addObject("userId", currentUser.getId());
         }
 
+        if (authenticatedUserUtilities.isAuthenticated()) {
+            User userKey = userDAO.findById(currentUser.getId());
+            response.addObject("userKey", userKey);
+            response.addObject("isLoggedIn", true); // Add this line to indicate the user is logged in
+        } else {
+            response.addObject("isLoggedIn", false); // Indicate the user is not logged in
+        }
+
         return response;
+
     }
 
 
