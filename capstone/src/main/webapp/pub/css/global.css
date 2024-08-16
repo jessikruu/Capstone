@@ -8,14 +8,41 @@ h1 {
 
 
 .body {
-    background: linear-gradient(183deg, rgba(212,212,250,1) 0%, rgba(209,186,255,1) 13%, rgba(237,212,241,1) 43%, rgba(252,224,234,1) 60%, rgba(255,255,255,1) 100%)  no-repeat fixed;
+    background: linear-gradient(180deg, rgba(147,89,43,1) 30%, rgba(91,40,19,1) 61%, rgba(27,16,7,1) 77%, rgba(9,9,6,1) 93%)  no-repeat fixed;
+}
+
+.flower-background {
+    background-image: url("../images/flowers.jpg");
+
+}
+
+.books-background {
+    background-image: url("../images/bookies.jpeg");
+}
+
+.user-profile-header-background {
+    width: fit-content;
+    border-radius: 15px;
+    background: linear-gradient(183deg, rgba(255,255,255,.2) 60%, rgba(204,204,249,.2) 100%);
+    padding: 20px;
+    /*margin-bottom: 20px;*/
+    /*justify-content: center;*/
+    /*position: relative;*/
+    margin: auto;
+
 }
 
 
 .clickable-row:hover {
     cursor: pointer;
-    background: radial-gradient(circle, rgba(238,174,202,.6) 0%, rgba(148,187,233,.6) 100%);
+    /*background: radial-gradient(circle, rgba(238,174,202,.6) 0%, rgba(148,187,233,.6) 100%);*/
+    background-image: url("../images/books-frame-backgrounds.jpeg");
+    /*opacity: 50%;*/
     width: fit-content;
+    font-weight: bolder;
+    color: black;
+    background-blend-mode: screen;
+
 
 }
 
@@ -28,12 +55,29 @@ h1 {
 
 .form-container {
     border-radius: 15px;
-    background: rgba(255,255,255, .2);
+    background: linear-gradient(180deg, rgba(147,89,43,.5) 30%, rgba(91,40,19,.5) 61%);
+    background-image: url("../images/bookies.jpeg");
+    background-blend-mode: lighten;
+    /*opacity: 50%;*/
     padding: 20px;
     /*margin-bottom: 20px;*/
     justify-content: center;
     /*position: relative;*/
+    /*width: fit-content;*/
 
+
+}
+.form-container-smaller {
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(147,89,43,.5) 30%, rgba(91,40,19,.5) 61%);
+    background-blend-mode: lighten;
+    /*opacity: 50%;*/
+    padding: 20px;
+    /*margin-bottom: 20px;*/
+    /*position: relative;*/
+    /*width: 1500px;*/
+    justify-content: center;
+    margin: auto;
 
 
 }
@@ -53,6 +97,10 @@ table, th, td {
 
 tr:nth-child(even) {
     background-color: rgba(199, 219, 210,1);
+    border-collapse: collapse;
+    border: 1px solid;
+
+
 }
 
 /*============button hover===============*/
@@ -68,3 +116,12 @@ tr:nth-child(even) {
     border-color: #6d6dee;
     color: black;
 }
+
+.user-profile-header {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-weight: bolder;
+
+}
+
+

@@ -1,25 +1,11 @@
+<body class="flower-background">
 <jsp:include page="../included/header.jsp"/>
 <link rel="stylesheet" href="/pub/css/global.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<h1 class="user-profile-header user-profile-header-background" style="color: #9696f3;">${userKey.username}</h1>
 
-<h1>${userKey.username}</h1>
-<div class="container justify-content-center">
-<div class="row  col-4">
-    <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
-       role="button" aria-expanded="false"
-       aria-controls="collapseExample"
-       onclick="window.location.href = '/user/bookClubsJoined?id=${userKey.id}'">
-        Joined Bookclubs
-    </a>
-    <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
-       role="button" aria-expanded="false"
-       aria-controls="collapseExample"
-       onclick="window.location.href = '/user/discussionsPosted?id=${userKey.id}'">
-        Posted Discussions
-    </a>
-</div></div>
-<div class="container">
+<div class="container form-container">
     <div class="row justify-content-center">
 
         <div class="col-auto">
@@ -44,6 +30,26 @@
 
             </table>
 
+            <div class="container justify-content-center">
+                <div class="row">
+                    <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px"
+                       class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse"
+                       href="#collapseExample"
+                       role="button" aria-expanded="false"
+                       aria-controls="collapseExample"
+                       onclick="window.location.href = '/user/bookClubsJoined?id=${userKey.id}'">
+                        Joined Bookclubs
+                    </a>
+                    <a style="display: block; margin: auto; width: fit-content; margin-bottom: 10px"
+                       class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse"
+                       href="#collapseExample"
+                       role="button" aria-expanded="false"
+                       aria-controls="collapseExample"
+                       onclick="window.location.href = '/user/discussionsPosted?id=${userKey.id}'">
+                        Posted Discussions
+                    </a>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -64,7 +70,7 @@
             <div class="card body" style="width: 50rem">
                 <div class="card-body ">
 
-                    <div class="row pt-3 justify-content-center">
+                    <div class="row pt-3 justify-content-center flower-background">
                         <div class="col-8">
                             <table class="table">
                                 <tr>
@@ -87,8 +93,6 @@
         </div>
     </div>
 </div>
-
-
-
+</body>
 
 <jsp:include page="../included/footer.jsp"/>

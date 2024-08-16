@@ -14,10 +14,10 @@
         </section>
     </c:if>
 
-    <div class="container">
+    <div class="container form-container">
         <div class="pt-5">
 
-            <form onsubmit="return onSubmit()" class="form-container" action="/account/create-account" method="post">
+            <form onsubmit="return onSubmit()" class="form-container-smaller" action="/account/create-account" method="post">
 
 
 
@@ -142,7 +142,7 @@
                     <div class="col-md-2">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name = "human" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault" style="color: #93592B; font-weight: bold">
                                 Are you human?
                             </label>
                             <c:if test="${bindingResult.hasFieldErrors('human')}">
@@ -161,7 +161,7 @@
                     <div class="col-md-2">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name = "sure" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault" style="color: #93592B; font-weight: bold">
                                 Are you suuuuure?
                             </label>
                             <c:if test="${bindingResult.hasFieldErrors('sure')}">

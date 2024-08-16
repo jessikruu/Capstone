@@ -25,7 +25,7 @@
 </head>
 <body class="body">
 
-<nav class="navbar navbar-expand-lg navbar-light " style="background: linear-gradient(180deg, rgba(209,186,255,1) 0%, rgba(252,224,234,0) 75%);
+<nav class="navbar navbar-expand-lg navbar-light " style="background: linear-gradient(180deg, rgba(147,89,43,1) 0%, rgba(252,224,234,0) 75%);
 ">
     <div class="container-fluid">
 

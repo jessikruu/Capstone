@@ -21,54 +21,92 @@
 
                 <form action="/account/loginProcessingURL" method="post">
 
-                    <!-- email input -->
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-2">
-                            <label for="emailId" class="col-form-label">Email</label>
-                        </div>
-                        <div class="col-4">
-                            <input type="text" id="emailId" name="username"
-                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('email')}">is-invalid</c:if>"
-                                   value="${form.email}">
+                    <div class=" row g-4  p-3 justify-content-center">
+                        <div class="col-md-4">
+                            <label class="visually-hidden" for="emailID">email</label>
+                            <div>
+                                <input type="text" id="emailID" name="username" placeholder="Email"
+                                       class="form-control <c:if test="${bindingResult.hasFieldErrors('email')}">is-invalid</c:if>"
+                                       value="${form.email}">
+                                <c:if test="${bindingResult.hasFieldErrors('email')}">
+                                    <div class="text-danger">
+                                        <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
+                                            ${error.defaultMessage}<br>
+                                        </c:forEach>
+                                    </div>
+                                </c:if>
+                            </div>
+
                         </div>
                     </div>
-                    <c:if test="${bindingResult.hasFieldErrors('email')}">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="offset-2 col-4">
-                                <div class="text-danger">
-                                    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
-                                        ${error.defaultMessage}<br>
-                                    </c:forEach>
-                                </div>
+
+
+<%--                    <!-- email input -->--%>
+<%--                    <div class="row align-items-center justify-content-center">--%>
+<%--                        <div class="col-2">--%>
+<%--                            <label for="emailId" class="col-form-label">Email</label>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-4">--%>
+<%--                            <input type="text" id="emailId" name="username"--%>
+<%--                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('email')}">is-invalid</c:if>"--%>
+<%--                                   value="${form.email}">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <c:if test="${bindingResult.hasFieldErrors('email')}">--%>
+<%--                        <div class="row align-items-center justify-content-center">--%>
+<%--                            <div class="offset-2 col-4">--%>
+<%--                                <div class="text-danger">--%>
+<%--                                    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">--%>
+<%--                                        ${error.defaultMessage}<br>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </c:if>--%>
+
+
+                    <div class=" row g-4  p-3 justify-content-center">
+                        <div class="col-md-4">
+                            <label class="visually-hidden" for="passwordID">password</label>
+                            <div>
+                                <input type="password" id="passwordID" name="password" placeholder="Password"
+                                       class="form-control <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>"
+                                       value="${form.password}">
+                                <c:if test="${bindingResult.hasFieldErrors('password')}">
+                                    <div class="text-danger">
+                                        <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
+                                            ${error.defaultMessage}<br>
+                                        </c:forEach>
+                                    </div>
+                                </c:if>
                             </div>
-                        </div>
-                    </c:if>
 
-
-                    <!-- password input field -->
-                    <div class="row align-items-center justify-content-center pt-3">
-                        <div class="col-2">
-                            <label for="passwordId" class="col-form-label">Password</label>
-                        </div>
-                        <div class="col-4">
-                            <input type="password"
-                                   id="passwordId"
-                                   name="password"
-                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>"
-                                   value="${form.password}">
                         </div>
                     </div>
-                    <c:if test="${bindingResult.hasFieldErrors('password')}">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="offset-2 col-4">
-                                <div style="color:red">
-                                    <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
-                                        ${error.defaultMessage}<br>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-                    </c:if>
+
+
+<%--                    <!-- password input field -->--%>
+<%--                    <div class="row align-items-center justify-content-center pt-3">--%>
+<%--                        <div class="col-2">--%>
+<%--                            <label for="passwordId" class="col-form-label">Password</label>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-4">--%>
+<%--                            <input type="password" id="passwordId" name="password" class="form-control --%>
+<%--                        <c:if test="${bindingResult.hasFieldErrors('password')}">is-invalid</c:if>"--%>
+<%--                                   value="${form.password}">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <c:if test="${bindingResult.hasFieldErrors('password')}">--%>
+<%--                        <div class="row align-items-center justify-content-center">--%>
+<%--                            <div class="offset-2 col-4">--%>
+<%--                                <div style="color:red">--%>
+<%--                                    <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">--%>
+<%--                                        ${error.defaultMessage}<br>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </c:if>--%>
 
                     <div class="row justify-content-center pt-3 ">
                         <div class="col-auto text-center">

@@ -30,40 +30,43 @@
                 </tr>
 
 
-
-
-
             </table>
+            <div class="container justify-content-center">
+                <div class="row">
+                    <a style="display: block; margin: auto; width: fit-content;" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse"
+                       href="#collapseExample"
+                       role="button" aria-expanded="false"
+                       aria-controls="collapseExample"
+                       onclick="window.location.href = '/bookClub/addToClub?id=${bookClubKey.id}'">
+                        Add to your bookclubs!
+                    </a>
 
-            <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
-               role="button" aria-expanded="false"
-               aria-controls="collapseExample"
-               onclick="window.location.href = '/bookClub/addToClub?id=${bookClubKey.id}'">
-                Add to your bookclubs!
-            </a>
-
-            <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
-               role="button" aria-expanded="false"
-               aria-controls="collapseExample"
-               onclick="window.location.href = '/discussion/create?id=${bookClubKey.id}'">
-                Create New Discussion Post!
-            </a>
+                    <a style="display: block; margin: auto; width: fit-content;" class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse"
+                       href="#collapseExample"
+                       role="button" aria-expanded="false"
+                       aria-controls="collapseExample"
+                       onclick="window.location.href = '/discussion/create?id=${bookClubKey.id}'">
+                        Create New Discussion Post!
+                    </a>
+                </div>
+            </div>
 
             <div class="container">
 
                 <p>
-                    <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse" href="#collapseExample"
+                    <a class="btn btn-primary custom-primary custom-primary:hover" data-bs-toggle="collapse"
+                       href="#collapseExample"
                        role="button" aria-expanded="false"
                        aria-controls="collapseExample">
                         Discussions Found (${discussions.size()})
                     </a>
                 </p>
                 <div class="collapse" id="collapseExample">
-                    <div class="card card-body body">
+                    <div class="card card-body body books-background">
 
                         <div class="row pt-5">
                             <div class="col-12">
-                                <h2 class="text-center">Current Discussion Posts</h2>
+                                <h2 class="text-center user-profile-header-background">Current Discussion Posts</h2>
                             </div>
                         </div>
                         <div class="row pt-3 justify-content-center">
@@ -95,9 +98,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 
 <jsp:include page="../included/footer.jsp"/>
